@@ -1,0 +1,145 @@
+#Footer {
+    display: grid;
+    width: 100%;
+    height: 80vh;
+    background-color: #000;
+    color: #fff;
+    font-family: "Open Sans";
+}
+
+#FooterWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1910px;
+    height: 80vh;
+    background-color: #000;
+    color: #fff;
+}
+
+#FooterWrapperHeader{
+    display: flex;
+    align-items: center;
+    height: 119px;
+    background-color: #000;
+    color: #fff;
+    padding: 0 10%;
+    font-size: 45px;
+    line-height: 65px;
+}
+
+#FooterWrapperCard {
+    display: grid;
+    grid-template-columns: .4fr .6fr;
+    padding: 0 10%;
+    width: 100%;  
+    height: 100%;
+    font-size: 15px; 
+}
+
+#FooterAddressWprapper{
+    width: 100%;    
+}
+
+
+#FooterMapWprapper{
+    width: 100%;  
+}
+
+#FooterMenuWprapper{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;  
+}
+
+#AddressList, #AddressListSecondLine {    
+    list-style: none;
+    margin-top: 50px;
+}
+
+#AddressListSecondLine {
+    margin-top: 15px;
+}
+
+
+#FooterCopyright{
+    display: grid;
+    width: 100%;
+    color: #fff;
+}
+
+#FooterNavMenuWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 100%;
+    width:100%;
+    list-style: none;
+    text-decoration: none;
+}
+
+#FooterMenuButton{
+    display: inherit;    
+    padding: 0 6px;  
+    height: 100%;
+    margin-right: 10px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 27px;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center; 
+     
+}
+
+#FooterMenuButton:first-child {
+    background: rgb(215, 58, 30);
+    color: #fff;  
+  }
+
+  #FooterMenuButton:first-child:hover {
+  background: white;
+  color: black;
+  }
+  #FooterMenuButton:nth-child(2) {
+    background: rgb(0, 119, 179);
+  }
+ #FooterMenuButton:nth-child(2):hover {
+  background: white;
+  color: rgb(0, 119, 179);
+  }
+
+  #FooterMenuButton:nth-child(3) {
+    background: rgb(69, 100, 255);
+  }
+  #FooterMenuButton:nth-child(4) {
+    background: rgb(73, 133, 0);
+  }
+  #FooterMenuButton:nth-child(5) {
+    background: rgb(236, 0, 0);
+  }
+  #FooterMenuButton:nth-child(6) {
+    background: rgb(114, 0, 255);
+  }
+  #FooterMenuButton:nth-child(7) {
+    background: rgb(128,64,0);
+  }
+
+  
+#FooterMenuButton a{
+    text-decoration: none;
+    color:#fff;
+}
+
+#FooterCopyright{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    height: 30px;
+    background-color: #000;
+    color: #717171;
+}
