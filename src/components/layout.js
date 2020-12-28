@@ -104,19 +104,22 @@ const Layout = ({ isHomePage, children }) => {
   `)
 
   return (
-    <div data-is-root-path={isHomePage} >
+    <div data-is-root-path={isHomePage}>
       <GlobalStyle />
-      <div id="NaviWrapper" >
+      <div id="NaviWrapper">
         <div id="NaviWrapperCard">
           <div id="LogotypWrapper">
             <div id="LogotypPhoto">Photo</div>
             <div id="LogotypBrandNameWrapper">
+              <div id="LogotypBrandFirstName">UG</div>
               {isHomePage ? (
-                <h1>
+                <h1 id="LogotypBrandSecondName">
                   <Link to="/">{parse(title)}</Link>
                 </h1>
               ) : (
-                <Link to="/">{title}</Link>
+                <Link to="/" id="LogotypBrandSecondName">
+                  {title}
+                </Link>
               )}
             </div>
           </div>

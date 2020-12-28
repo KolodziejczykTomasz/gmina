@@ -3,10 +3,12 @@ import styled from "styled-components"
 
 const WrapperBreakeSection = styled.div`
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 0.25fr 0.75fr;
   height: 90px;
   width: 100%;
-  &:first-child {
+  color: #fff;
+  place-items: center;
+    &:first-child {
     background: rgb(215, 58, 30);
   }
   &:nth-of-type(3) {
@@ -26,7 +28,10 @@ const WrapperBreakeSection = styled.div`
   }
 `
 const WrapperLeftSide = styled.div`
+  display: inherit;
   width: 100%;
+  justify-items: right;
+  padding-right: 50px;
 `
 const WrapperRightSide = styled.div`
   width: 100%;

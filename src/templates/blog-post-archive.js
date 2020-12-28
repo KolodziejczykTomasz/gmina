@@ -20,6 +20,18 @@ const MainWrapperSection = styled.div`
   max-width: 1910px;
   margin: 0 auto;
 `
+const SectionWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 0.25fr 0.75fr;
+`
+const SectionSideLeft = styled.div`
+  width: 100%;
+  height: 100%;
+`
+const SectionSideRight = styled.div`
+  width: 100%;
+  height: 100%;
+`
 
 const SectionNews = styled.div`
   width: 100%;
@@ -61,55 +73,70 @@ const BlogIndex = ({ data }) => {
         <MainWrapperSection>
           <BreakeSection>Aktualności</BreakeSection>
           <SectionNews>
-            <div>SectionNewsPhoto</div>
-            <div>
-              <div>SectionNewsHeader</div>
-              <div>
-                <div>SectionNewsPhoto</div>
-                <div style={{ width: "70%" }}>
-                  <ol style={{ listStyle: `none` }}>
-                    {posts.map(post => {
-                      const title = post.title
+            <SectionWrapper>
+              <SectionSideLeft>Aside Photo</SectionSideLeft>
+              <SectionSideRight>
+                <ol style={{ listStyle: `none`, marginLeft:'-35px' }}>
+                  {posts.map(post => {
+                    const title = post.title
 
-                      return (
-                        <li key={post.uri}>
-                          <article
-                            itemScope
-                            itemType="http://schema.org/Article"
-                          >
-                            <header>
-                              <h2>
-                                <Link to={post.uri} itemProp="url">
-                                  <span itemProp="headline">
-                                    {parse(title)}
-                                  </span>
-                                </Link>
-                              </h2>
-                              <small>{post.date}</small>
-                            </header>
-                            <section itemProp="description">
-                              {parse(post.excerpt)}
-                            </section>
-                          </article>
-                        </li>
-                      )
-                    })}
-                  </ol>
-                </div>
-              </div>
-              <div>SectionNewsFooter</div>
-            </div>
+                    return (
+                      <li key={post.uri}>
+                        <article itemScope itemType="http://schema.org/Article">
+                          <header>
+                            <h2>
+                              <Link to={post.uri} itemProp="url">
+                                <span itemProp="headline">{parse(title)}</span>
+                              </Link>
+                            </h2>
+                            <small>{post.date}</small>
+                          </header>
+                          <section itemProp="description">
+                            {parse(post.excerpt)}
+                          </section>
+                        </article>
+                      </li>
+                    )
+                  })}
+                </ol>
+              </SectionSideRight>
+            </SectionWrapper>
           </SectionNews>
           <BreakeSection>Gmina</BreakeSection>
-          <SectionAbout>Gmina</SectionAbout>
+          <SectionAbout>
+            <SectionWrapper>
+              <SectionSideLeft>Aside Photo</SectionSideLeft>
+              <SectionSideRight>Gmina</SectionSideRight>
+            </SectionWrapper>
+          </SectionAbout>
           <BreakeSection>History</BreakeSection>
-          <SectionHistory>History</SectionHistory>
+          <SectionHistory>
+            <SectionWrapper>
+              <SectionSideLeft>Aside Photo</SectionSideLeft>
+              <SectionSideRight>Gmina</SectionSideRight>
+            </SectionWrapper>
+          </SectionHistory>
           <BreakeSection>Natura</BreakeSection>
-          <SectionNatura>Natura</SectionNatura>
+          <SectionNatura>
+            <SectionWrapper>
+              <SectionSideLeft>Aside Photo</SectionSideLeft>
+              <SectionSideRight>Gmina</SectionSideRight>
+            </SectionWrapper>
+          </SectionNatura>
           <BreakeSection>Tourism</BreakeSection>
-          <SectionTourism>Tourism</SectionTourism>
+          <SectionTourism>
+            <SectionWrapper>
+              <SectionSideLeft>Aside Photo</SectionSideLeft>
+              <SectionSideRight>Gmina</SectionSideRight>
+            </SectionWrapper>
+          </SectionTourism>
           <BreakeSection>Culture</BreakeSection>
-          <SectionCulture>Culture</SectionCulture>
+          <SectionCulture>
+            <SectionWrapper>
+              <SectionSideLeft>Aside Photo</SectionSideLeft>
+              <SectionSideRight>Gmina</SectionSideRight>
+            </SectionWrapper>
+          </SectionCulture>
         </MainWrapperSection>
       </MainWrapper>
     </Layout>
