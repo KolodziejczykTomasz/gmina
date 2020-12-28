@@ -18,7 +18,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   }
 
   return (
-    <Layout>
+    <Layout style={{ width: "100vw" }}>
       <SEO title={post.title} description={post.excerpt} />
 
       <article

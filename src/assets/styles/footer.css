@@ -1,6 +1,7 @@
 #Footer {
     display: grid;
     width: 100%;
+    max-width: 1910px;
     height: 80vh;
     background-color: #000;
     color: #fff;
@@ -79,10 +80,11 @@
     width:100%;
     list-style: none;
     text-decoration: none;
+    border: 3px dotted transparent;
 }
 
 #FooterMenuButton{
-    display: inherit;    
+    display: inherit;  
     padding: 0 6px;  
     height: 100%;
     margin-right: 10px;
@@ -91,41 +93,56 @@
     line-height: 27px;
     text-decoration: none;
     justify-content: center;
-    align-items: center; 
-     
+    align-items: center;  
+     background: white;
+    color: black;  
 }
 
 #FooterMenuButton:first-child {
     background: rgb(215, 58, 30);
-    color: #fff;  
   }
 
-  #FooterMenuButton:first-child:hover {
-  background: white;
-  color: black;
+  #FooterMenuButton:first-child :hover {
+    color: rgb(215, 58, 30);
+
   }
   #FooterMenuButton:nth-child(2) {
     background: rgb(0, 119, 179);
   }
- #FooterMenuButton:nth-child(2):hover {
-  background: white;
+ #FooterMenuButton:nth-child(2) :hover {
   color: rgb(0, 119, 179);
   }
 
   #FooterMenuButton:nth-child(3) {
     background: rgb(69, 100, 255);
   }
+   #FooterMenuButton:nth-child(3) :hover {
+  color: rgb(69, 100, 255);
+  }
   #FooterMenuButton:nth-child(4) {
     background: rgb(73, 133, 0);
+  }
+   #FooterMenuButton:nth-child(4) :hover {
+  color: rgb(73, 133, 0);
   }
   #FooterMenuButton:nth-child(5) {
     background: rgb(236, 0, 0);
   }
+   #FooterMenuButton:nth-child(5) :hover {
+  color: rgb(236, 0, 0);
+  }
   #FooterMenuButton:nth-child(6) {
     background: rgb(114, 0, 255);
   }
+   #FooterMenuButton:nth-child(6) :hover {
+  color: rgb(114, 0, 255);
+  }
   #FooterMenuButton:nth-child(7) {
     background: rgb(128,64,0);
+  }
+
+   #FooterMenuButton:nth-child(7) :hover {
+  color: rgb(128,64,0);
   }
 
   
@@ -133,6 +150,14 @@
     text-decoration: none;
     color:#fff;
 }
+
+#FooterMenuButton:hover{
+ background: #fff;
+}
+
+#FooterMenuButton :focus{
+    border: 3px dotted #fff !important;
+  }
 
 #FooterCopyright{
     display: flex;

@@ -18,9 +18,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;  
     font-size: 1.6em; 
-    font-family: 'Open Sans', 'sans-serif';   
-    width: 100vw;
-    max-width: 1910px; 
+    font-family: 'Open Sans', 'sans-serif';
   }
 
   button {

@@ -1,4 +1,9 @@
 module.exports = {
+  siteMetadata: {
+    title: `Urząd Gminy`,
+    description: `Zapraszamy do UG Gminy`,
+    author: `NETTOM`,
+  },
   plugins: [
     {
       resolve: `gatsby-source-wordpress-experimental`,
@@ -13,6 +18,13 @@ module.exports = {
       options: {
         name: `assets`,
         path: `${__dirname}/content/assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     `gatsby-transformer-sharp`,

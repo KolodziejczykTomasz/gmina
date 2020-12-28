@@ -1,12 +1,13 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
+import Hero from "../components/hero"
 
 import styled from "styled-components"
-import GlobalStyle from "../components/styles/globalStyles"
+import GlobalStyle from "../assets/styles/globalStyles"
 
-import "../components/styles/footer.css"
-import "../components/styles/navigation.css"
+import "../assets/styles/footer.css"
+import "../assets/styles/navigation.css"
 
 const NavMenuWrapper = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const NavMenuWrapper = styled.div`
   padding-bottom: 20px;
   height: 100%;
   width: 100%;
+  max-width: 1910px;
   list-style: none;
   text-decoration: none;
 `
@@ -70,7 +72,7 @@ const MenuButton = styled(Link)`
     background: rgb(114, 0, 255);
   }
   :nth-child(7):after {
-    background: rgb(128,64,0);
+    background: rgb(128, 64, 0);
   }
   :hover  {
     color: #fff;
@@ -84,7 +86,6 @@ const MenuButton = styled(Link)`
     border: 3px dotted #c23b37 !important;
   }
 `
-
 
 const Layout = ({ isHomePage, children }) => {
   const {
@@ -103,98 +104,92 @@ const Layout = ({ isHomePage, children }) => {
   `)
 
   return (
-    <div data-is-root-path={isHomePage}>
+    <div data-is-root-path={isHomePage} >
       <GlobalStyle />
-      <header>
-        <div id="NaviWrapper">
-          <div id="NaviWrapperCard">
-            <div id="LogotypWrapper">
-              <div id="LogotypPhoto">Photo</div>
-              <div id="LogotypBrandNameWrapper">
-                {isHomePage ? (
-                  <h1 className="main-heading">
-                    <Link to="/">{parse(title)}</Link>
-                  </h1>
-                ) : (
-                  <Link className="header-link-home" to="/">
-                    {title}
-                  </Link>
-                )}
-              </div>
+      <div id="NaviWrapper" >
+        <div id="NaviWrapperCard">
+          <div id="LogotypWrapper">
+            <div id="LogotypPhoto">Photo</div>
+            <div id="LogotypBrandNameWrapper">
+              {isHomePage ? (
+                <h1>
+                  <Link to="/">{parse(title)}</Link>
+                </h1>
+              ) : (
+                <Link to="/">{title}</Link>
+              )}
             </div>
-            <NavMenuWrapper>
-              <MenuButton to="/">Aktualności</MenuButton>
-              <MenuButton to="/">Gmina</MenuButton>
-              <MenuButton to="/">Historia</MenuButton>
-              <MenuButton to="/">Środowisko</MenuButton>
-              <MenuButton to="/">Turystyka</MenuButton>
-              <MenuButton to="/">Kultura</MenuButton>
-              <MenuButton to="/">Kontakt</MenuButton>
-            </NavMenuWrapper>
           </div>
-        </div>        
-      </header>
-
+          <NavMenuWrapper>
+            <MenuButton to="/">Aktualności</MenuButton>
+            <MenuButton to="/">Gmina</MenuButton>
+            <MenuButton to="/">Historia</MenuButton>
+            <MenuButton to="/">Środowisko</MenuButton>
+            <MenuButton to="/">Turystyka</MenuButton>
+            <MenuButton to="/">Kultura</MenuButton>
+            <MenuButton to="/">Kontakt</MenuButton>
+          </NavMenuWrapper>
+        </div>
+      </div>
+      <Hero />
       <main>{children}</main>
 
-      <footer>
-        <div id="Footer">
-          <div id="FooterWrapperHeader">Informacje kontaktowe</div>
-          <div id="FooterWrapper">
-            <div id="FooterWrapperCard">
-              <div id="FooterAddressWprapper">
-                <div>
-                  <p>Urząd Gminy</p>
-                  <ul id="AddressList">
-                    <li>ulica</li>
-                    <li>kod pocztowy</li>
-                    <li>miejscwośći</li>
-                  </ul>
-                  <ul id="AddressListSecondLine">
-                    <li>Telefon 1</li>
-                    <li>Telefon 2</li>
-                  </ul>
-                  <p></p>
-                </div>
-              </div>
-              <div id="FooterMapWprapper">
-                <div>Mapa</div>
+      <div id="Footer">
+        <div id="FooterWrapperHeader">Informacje kontaktowe</div>
+        <div id="FooterWrapper">
+          <div id="FooterWrapperCard">
+            <div id="FooterAddressWprapper">
+              <div>
+                <p>Urząd Gminy</p>
+                <ul id="AddressList">
+                  <li>ulica</li>
+                  <li>kod pocztowy</li>
+                  <li>miejscwośći</li>
+                </ul>
+                <ul id="AddressListSecondLine">
+                  <li>Telefon 1</li>
+                  <li>Telefon 2</li>
+                </ul>
+                <p></p>
               </div>
             </div>
-            <div id="FooterMenuWprapper">
-              <ul id="FooterNavMenuWrapper">
-                <li id="FooterMenuButton">
-                  <Link to="/">Aktualności</Link>
-                </li>
-                <li id="FooterMenuButton">
-                  <Link to="/">Gmina</Link>
-                </li>
-                <li id="FooterMenuButton">
-                  <Link to="/">Historia</Link>
-                </li>
-                <li id="FooterMenuButton">
-                  <Link to="/">Środowisko</Link>
-                </li>
-                <li id="FooterMenuButton">
-                  <Link to="/">Turystyka</Link>
-                </li>
-                <li id="FooterMenuButton">
-                  <Link to="/">Kultura</Link>
-                </li>
-                <li id="FooterMenuButton">
-                  <Link to="/">Kontakt</Link>
-                </li>
-              </ul>
+            <div id="FooterMapWprapper">
+              <div>Mapa</div>
             </div>
           </div>
-          <div id="FooterCopyright">
-            <div>Polityka prywatności</div>
-            <div>Deklaracja dostępności</div>
-            <div> © {new Date().getFullYear()}</div>
-            <div>NETTOM</div>
+          <div id="FooterMenuWprapper">
+            <ul id="FooterNavMenuWrapper">
+              <li id="FooterMenuButton">
+                <Link to="/">Aktualności</Link>
+              </li>
+              <li id="FooterMenuButton">
+                <Link to="/">Gmina</Link>
+              </li>
+              <li id="FooterMenuButton">
+                <Link to="/">Historia</Link>
+              </li>
+              <li id="FooterMenuButton">
+                <Link to="/">Środowisko</Link>
+              </li>
+              <li id="FooterMenuButton">
+                <Link to="/">Turystyka</Link>
+              </li>
+              <li id="FooterMenuButton">
+                <Link to="/">Kultura</Link>
+              </li>
+              <li id="FooterMenuButton">
+                <Link to="/">Kontakt</Link>
+              </li>
+            </ul>
           </div>
         </div>
-      </footer>
+        <div id="FooterCopyright">
+          <div>Polityka prywatności</div>
+          <div>Deklaracja dostępności</div>
+          <div> © {new Date().getFullYear()}</div>
+          <div>NETTOM</div>
+        </div>
+      </div>
     </div>
   )
 }
