@@ -13,7 +13,7 @@ const NavMenuWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-bottom: 20px;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
   max-width: 1910px;
@@ -23,7 +23,7 @@ const NavMenuWrapper = styled.div`
 
 const MenuButton = styled(Link)`
   display: flex;
-  padding: 0 6px;
+  padding: 0 10px;
   height: 100%;
   margin-right: 10px;
   font-size: 1.6rem;
@@ -33,7 +33,7 @@ const MenuButton = styled(Link)`
   justify-content: center;
   align-items: center;
   color: #000;
-  border: 3px dotted transparent;
+  border: 5px dotted transparent;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -45,10 +45,10 @@ const MenuButton = styled(Link)`
     width: 100%;
     left: 0;
     bottom: 0;
-    height: 4px;
+    height: 8px;
     color: black !important;
     z-index: -1;
-    border: 3px dotted transparent;
+    border: 5px dotted transparent;
     :active  {
       bottom: 40px;
     }
@@ -90,7 +90,7 @@ const MenuButton = styled(Link)`
 const Layout = ({ isHomePage, children }) => {
   const {
     wp: {
-      generalSettings: { title },
+      generalSettings: { title, description },
     },
   } = useStaticQuery(graphql`
     query LayoutQuery {
@@ -111,14 +111,14 @@ const Layout = ({ isHomePage, children }) => {
           <div id="LogotypWrapper">
             <div id="LogotypPhoto">Photo</div>
             <div id="LogotypBrandNameWrapper">
-              <div id="LogotypBrandFirstName">UG</div>
+              <div id="LogotypBrandFirstName">{title}</div>
               {isHomePage ? (
                 <h1 id="LogotypBrandSecondName">
                   <Link to="/">{parse(title)}</Link>
                 </h1>
               ) : (
                 <Link to="/" id="LogotypBrandSecondName">
-                  {title}
+                  {description}
                 </Link>
               )}
             </div>

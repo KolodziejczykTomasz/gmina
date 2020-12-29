@@ -69,14 +69,14 @@ const BlogIndex = ({ data }) => {
   return (
     <Layout>
       <MainWrapper>
-        <SEO title="All posts" />
+        <SEO title="UG Gmina" />
         <MainWrapperSection>
           <BreakeSection>Aktualności</BreakeSection>
           <SectionNews>
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
               <SectionSideRight>
-                <ol style={{ listStyle: `none`, marginLeft:'-35px' }}>
+                <ol style={{ listStyle: `none`, marginLeft: "-35px" }}>
                   {posts.map(post => {
                     const title = post.title
 
@@ -157,7 +157,7 @@ export const pageQuery = graphql`
         uri
         date(formatString: "MMMM DD, YYYY")
         title
-        excerpt
+        excerpt        
       }
     }
   }
