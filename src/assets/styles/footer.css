@@ -2,7 +2,7 @@
     display: grid;
     width: 100%;
     max-width: 1910px;
-    height: 80vh;
+    height: 60vh;
     background-color: #000;
     color: #fff;
     font-family: "Open Sans";
@@ -84,9 +84,10 @@
 }
 
 #FooterMenuButton{
-    display: inherit;  
+    display: inherit; 
+    width: 150px; 
     padding: 0 6px;  
-    height: 100%;
+    height: 50px;
     margin-right: 10px;
     font-size: 1.6rem;
     font-weight: 400;

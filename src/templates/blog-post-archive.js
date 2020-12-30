@@ -66,6 +66,7 @@ const SectionCulture = styled.div`
 
 const BlogIndex = ({ data }) => {
   const posts = data.allWpPost.nodes
+
   return (
     <Layout>
       <MainWrapper>
@@ -157,7 +158,7 @@ export const pageQuery = graphql`
         uri
         date(formatString: "MMMM DD, YYYY")
         title
-        excerpt        
+        excerpt
       }
     }
   }
