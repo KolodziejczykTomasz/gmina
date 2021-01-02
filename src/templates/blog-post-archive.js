@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import BreakeSection from "../components/breakeSection"
 
 import styled from "styled-components"
+import "../style.css"
 
 const MainWrapper = styled.div`
   display: flex;
@@ -20,6 +21,12 @@ const MainWrapperSection = styled.div`
   max-width: 1910px;
   margin: 0 auto;
 `
+const Section = styled.div`
+  width: 100%;
+  min-height: 300px;
+  height: auto;
+`
+
 const SectionWrapper = styled.div`
   display: grid;
   grid-template-columns: 0.25fr 0.75fr;
@@ -34,80 +41,60 @@ const SectionSideRight = styled.div`
   height: auto;
 `
 
-const SectionNews = styled.div`
-  width: 100%;
-  min-height: 300px;
-  height: auto;
+const SectionSideRightHeader = styled.div`
+  padding: 45px 0 36px 0;
+  font-size: 45px;
+  line-height: 60px;
 `
-const SectionAbout = styled.div`
-  width: 100%;
-  min-height: 300px;
-  height: auto;
-`
-const SectionHistory = styled.div`
-  width: 100%;
-  min-height: 300px;
-  height: auto;
-`
-const SectionNatura = styled.div`
-  width: 100%;
-  min-height: 300px;
-  height: auto;
-`
-const SectionTourism = styled.div`
-  width: 100%;
-  min-height: 300px;
-  height: auto;
-`
-const SectionCulture = styled.div`
-  width: 100%;
-  min-height: 300px;
-  height: auto;
-`
+const SectionSideRightContent = styled.div``
 
 const CardWrapper = styled.div`
   height: 100%;
+  margin-bottom: 50px;
 `
 
 const CardHeader = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  color: rgb(236, 0, 0);
+  font-weight: 600;
 `
 const CardHeaderTitle = styled.div`
-  background-color: red;
-`
-const CardHeaderDate = styled.div`
-  background-color: green;
+  font-size: 22px;
+  line-height: 30px;
 `
 
 const CardMain = styled.div`
   display: grid;
   grid-template-columns: 0.3fr 0.7fr;
+  font-size: 15px;
 `
-const CardMainPhoto = styled.div`
-  background-color: blue;
-`
+const CardMainPhoto = styled.div``
+
 const CardMainContent = styled.div`
-  background-color: burlywood;
+  padding-right: 50px;
+  text-align: justify;
+  hyphens: auto;
+  word-wrap: break-word;
 `
 
 const CardFooter = styled.div`
-  background-color: grey;
+  display: flex;
+  justify-content: flex-end;
 `
-const ButtonMore = styled.button``
 
 const MenuListWrapper = styled.div`
   display: flex;
   flex-direction: row;
   list-style: none;
-  color: #fff;
+  color: inherit;
 `
 
 const MenuListItem = styled.div`
   padding: 10px 15px;
-  width: auto;
+  color: #fff;
   &:hover {
-    color: initial;
+    color: inherit;
     cursor: pointer;
     background-color: #fff;
   }
@@ -125,37 +112,39 @@ const BlogIndex = ({ data }) => {
               <MenuListItem>Wszystkie aktualności</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <SectionNews>
+          <Section>
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
               <SectionSideRight>
-                <ol style={{ listStyle: `none`, marginLeft: "-35px" }}>
-                  {posts.map(post => {
-                    const title = post.title
-                    return (
-                      <li key={post.uri}>
-                        <CardWrapper>
-                          <CardHeader>
-                            <CardHeaderTitle>{parse(title)}</CardHeaderTitle>
-                            <CardHeaderDate>{post.date}</CardHeaderDate>
-                          </CardHeader>
-                          <CardMain>
-                            <CardMainPhoto>PHOTO</CardMainPhoto>
-                            <CardMainContent>
-                              {parse(post.excerpt)}
-                            </CardMainContent>
-                          </CardMain>
-                          <CardFooter>
-                            <ButtonMore>Zobacz więcej</ButtonMore>
-                          </CardFooter>
-                        </CardWrapper>
-                      </li>
-                    )
-                  })}
-                </ol>
+                <SectionSideRightHeader>Aktualności</SectionSideRightHeader>
+                <SectionSideRightContent>
+                  <ol style={{ listStyle: `none`, marginLeft: "-35px" }}>
+                    {posts.map(post => {
+                      const title = post.title
+                      const excerpt = post.excerpt
+                      return (
+                        <li key={post.uri}>
+                          <CardWrapper>
+                            <CardHeader>
+                              <div className="CardHeaderDate">{post.date}</div>
+                              <CardHeaderTitle>{parse(title)}</CardHeaderTitle>
+                            </CardHeader>
+                            <CardMain>
+                              <CardMainPhoto>PHOTO</CardMainPhoto>
+                              <CardMainContent>
+                                {parse(excerpt)}
+                              </CardMainContent>
+                            </CardMain>
+                            <CardFooter></CardFooter>
+                          </CardWrapper>
+                        </li>
+                      )
+                    })}
+                  </ol>
+                </SectionSideRightContent>
               </SectionSideRight>
             </SectionWrapper>
-          </SectionNews>
+          </Section>
           <BreakeSection>
             <MenuListWrapper>
               <MenuListItem>Ogłoszenia</MenuListItem>
@@ -165,24 +154,30 @@ const BlogIndex = ({ data }) => {
               <MenuListItem>RODO</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <SectionAbout>
+          <Section>
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
-              <SectionSideRight></SectionSideRight>
+              <SectionSideRight>
+                <SectionSideRightHeader>Gmina</SectionSideRightHeader>
+                <SectionSideRightContent>Gmina</SectionSideRightContent>
+              </SectionSideRight>
             </SectionWrapper>
-          </SectionAbout>
+          </Section>
           <BreakeSection>
             <MenuListWrapper>
               <MenuListItem>Historia Gminy</MenuListItem>
               <MenuListItem>Zabytki</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <SectionHistory>
+          <Section>
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
-              <SectionSideRight>Gmina</SectionSideRight>
+              <SectionSideRight>
+                <SectionSideRightHeader>Historia</SectionSideRightHeader>
+                <SectionSideRightContent>Gmina</SectionSideRightContent>
+              </SectionSideRight>
             </SectionWrapper>
-          </SectionHistory>
+          </Section>
           <BreakeSection>
             <MenuListWrapper>
               <MenuListItem>Gospodarka odpadami</MenuListItem>
@@ -190,12 +185,15 @@ const BlogIndex = ({ data }) => {
               <MenuListItem>Ochrona środowiska</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <SectionNatura>
+          <Section>
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
-              <SectionSideRight>Gmina</SectionSideRight>
+              <SectionSideRight>
+                <SectionSideRightHeader>Środowisko</SectionSideRightHeader>
+                <SectionSideRightContent>Gmina</SectionSideRightContent>
+              </SectionSideRight>
             </SectionWrapper>
-          </SectionNatura>
+          </Section>
           <BreakeSection>
             <MenuListWrapper>
               <MenuListItem>Atrakcje turystyczne</MenuListItem>
@@ -203,23 +201,29 @@ const BlogIndex = ({ data }) => {
               <MenuListItem>Sport</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <SectionTourism>
+          <Section>
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
-              <SectionSideRight>Gmina</SectionSideRight>
+              <SectionSideRight>
+                <SectionSideRightHeader>Turystyka</SectionSideRightHeader>
+                <SectionSideRightContent>Gmina</SectionSideRightContent>
+              </SectionSideRight>
             </SectionWrapper>
-          </SectionTourism>
+          </Section>
           <BreakeSection>
             <MenuListWrapper>
               <MenuListItem>Atrakcje kulturalne</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <SectionCulture>
+          <Section>
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
-              <SectionSideRight>Gmina</SectionSideRight>
+              <SectionSideRight>
+                <SectionSideRightHeader>Kultura</SectionSideRightHeader>
+                <SectionSideRightContent>Gmina</SectionSideRightContent>
+              </SectionSideRight>
             </SectionWrapper>
-          </SectionCulture>
+          </Section>
         </MainWrapperSection>
       </MainWrapper>
     </Layout>
@@ -238,7 +242,7 @@ export const pageQuery = graphql`
       nodes {
         excerpt
         uri
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MM.DD.YYYY")
         title
         excerpt
       }
