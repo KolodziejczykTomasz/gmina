@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import BreakeSection from "../components/breakeSection"
 
 import styled from "styled-components"
-import "../style.css"
+import "../style.scss"
 
 const MainWrapper = styled.div`
   display: flex;
@@ -64,6 +64,25 @@ const CardHeaderTitle = styled.div`
   line-height: 30px;
 `
 
+const CardHeaderDate = styled.div`
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+  background-color: rgb(236, 0, 0);
+  border: none;
+  margin-right: 75px;
+  width: 150px;
+  margin-top: 20px;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid transparent;
+  :hover {
+    border: 1px solid rgb(236, 0, 0);
+    color: rgb(236, 0, 0);
+    background-color: #fff;
+  }
+`
+
 const CardMain = styled.div`
   display: grid;
   grid-template-columns: 0.3fr 0.7fr;
@@ -76,6 +95,33 @@ const CardMainContent = styled.div`
   text-align: justify;
   hyphens: auto;
   word-wrap: break-word;
+  & + :hover ${CardHeaderDate} {
+    border: 1px solid rgb(236, 0, 0);
+    color: rgb(236, 0, 0);
+    background-color: #fff;
+  }
+  a.more-link span {
+    display: none;
+  }
+  .more-link {
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: rgb(236, 0, 0);
+    border: none;
+    margin-right: 75px;
+    width: 150px;
+    margin-top: 20px;
+    text-decoration: none;
+    float: right;
+    text-align: center;
+    border: 1px solid transparent;
+    &:hover {
+      border: 1px solid rgb(236, 0, 0);
+      color: rgb(236, 0, 0);
+      background-color: #fff;
+    }
+  }
 `
 
 const CardFooter = styled.div`
@@ -126,7 +172,7 @@ const BlogIndex = ({ data }) => {
                         <li key={post.uri}>
                           <CardWrapper>
                             <CardHeader>
-                              <div className="CardHeaderDate">{post.date}</div>
+                              <CardHeaderDate>{post.date}</CardHeaderDate>
                               <CardHeaderTitle>{parse(title)}</CardHeaderTitle>
                             </CardHeader>
                             <CardMain>
@@ -233,18 +279,35 @@ const BlogIndex = ({ data }) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query WordPressPostArchive($offset: Int!, $postsPerPage: Int!) {
+  {
     allWpPost(
-      sort: { fields: [date], order: DESC }
-      limit: $postsPerPage
-      skip: $offset
+      filter: {
+        categories: {
+          nodes: {
+            elemMatch: {
+              name: { eq: "Gmina" }
+              contentNodes: { nodes: { elemMatch: {} } }
+            }
+          }
+        }
+        featuredImage: { node: { srcSet: {} } }
+        featuredImageId: {}
+      }
+      limit: 4
     ) {
       nodes {
+        date(formatString: "DD-MM-YYYY")
+        content
         excerpt
-        uri
-        date(formatString: "MM.DD.YYYY")
         title
-        excerpt
+      }
+    }
+    imageSharp {
+      id
+      resolutions {
+        src
+        tracedSVG
+        srcSet
       }
     }
   }
