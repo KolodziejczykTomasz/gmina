@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import parse from "html-react-parser"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BreakeSection from "../components/breakeSection"
@@ -88,7 +87,16 @@ const CardMain = styled.div`
   grid-template-columns: 0.3fr 0.7fr;
   font-size: 15px;
 `
-const CardMainPhoto = styled.div``
+const CardMainPhoto = styled.div`
+padding-top: 20px;
+`
+
+const CardMainPhotoItem = styled.img`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85%; 
+`
 
 const CardMainContent = styled.div`
   padding-right: 50px;
@@ -168,6 +176,8 @@ const BlogIndex = ({ data }) => {
                     {posts.map(post => {
                       const title = post.title
                       const excerpt = post.excerpt
+                      const src = post.featuredImage.node.mediaItemUrl
+                      const alt = post.featuredImage.node.altText
                       return (
                         <li key={post.uri}>
                           <CardWrapper>
@@ -176,7 +186,9 @@ const BlogIndex = ({ data }) => {
                               <CardHeaderTitle>{parse(title)}</CardHeaderTitle>
                             </CardHeader>
                             <CardMain>
-                              <CardMainPhoto>PHOTO</CardMainPhoto>
+                              <CardMainPhoto>
+                                <CardMainPhotoItem src={src} alt={alt} />
+                              </CardMainPhoto>
                               <CardMainContent>
                                 {parse(excerpt)}
                               </CardMainContent>
@@ -290,24 +302,21 @@ export const pageQuery = graphql`
             }
           }
         }
-        featuredImage: { node: { srcSet: {} } }
-        featuredImageId: {}
       }
       limit: 4
     ) {
       nodes {
-        date(formatString: "DD-MM-YYYY")
+        date(formatString: "DD.MM.YYYY")
         content
         excerpt
         title
-      }
-    }
-    imageSharp {
-      id
-      resolutions {
-        src
-        tracedSVG
-        srcSet
+        featuredImage {
+          node {
+            altText
+            mediaItemUrl
+            srcSet
+          }
+        }
       }
     }
   }
