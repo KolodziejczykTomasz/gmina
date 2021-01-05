@@ -125,12 +125,12 @@ const Layout = ({ isHomePage, children }) => {
           </div>
           <NavMenuWrapper>
             <MenuButton to="/">Aktualności</MenuButton>
-            <MenuButton to="/">Gmina</MenuButton>
-            <MenuButton to="/">Historia</MenuButton>
-            <MenuButton to="/">Środowisko</MenuButton>
-            <MenuButton to="/">Turystyka</MenuButton>
-            <MenuButton to="/">Kultura</MenuButton>
-            <MenuButton to="/">Kontakt</MenuButton>
+            <MenuButton to="/#gmina">Gmina</MenuButton>
+            <MenuButton to="/#historia">Historia</MenuButton>
+            <MenuButton to="/#natura">Środowisko</MenuButton>
+            <MenuButton to="/#turystyka">Turystyka</MenuButton>
+            <MenuButton to="/#kultura">Kultura</MenuButton>
+            <MenuButton to="/#Footer">Kontakt</MenuButton>
           </NavMenuWrapper>
         </div>
       </div>
@@ -170,22 +170,22 @@ const Layout = ({ isHomePage, children }) => {
                 <Link to="/">Aktualności</Link>
               </li>
               <li id="FooterMenuButton">
-                <Link to="/">Gmina</Link>
+                <Link to="/#gmina">Gmina</Link>
               </li>
               <li id="FooterMenuButton">
-                <Link to="/">Historia</Link>
+                <Link to="/#historia">Historia</Link>
               </li>
               <li id="FooterMenuButton">
-                <Link to="/">Środowisko</Link>
+                <Link to="/#natura">Środowisko</Link>
               </li>
               <li id="FooterMenuButton">
-                <Link to="/">Turystyka</Link>
+                <Link to="#turystyka">Turystyka</Link>
               </li>
               <li id="FooterMenuButton">
-                <Link to="/">Kultura</Link>
+                <Link to="/#kultura">Kultura</Link>
               </li>
               <li id="FooterMenuButton">
-                <Link to="/">Kontakt</Link>
+                <Link to="/#Footer">Kontakt</Link>
               </li>
             </ul>
           </div>

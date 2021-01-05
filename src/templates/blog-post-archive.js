@@ -87,15 +87,13 @@ const CardMain = styled.div`
   grid-template-columns: 0.3fr 0.7fr;
   font-size: 15px;
 `
-const CardMainPhoto = styled.div`
-padding-top: 20px;
-`
+const CardMainPhoto = styled.div``
 
 const CardMainPhotoItem = styled.img`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 85%; 
+  width: 80%;
+  display: grid;
+  object-fit: cover;
+  align-items: right;
 `
 
 const CardMainContent = styled.div`
@@ -167,7 +165,7 @@ const BlogIndex = ({ data }) => {
             </MenuListWrapper>
           </BreakeSection>
           <Section>
-            <SectionWrapper>
+            <SectionWrapper id="news">
               <SectionSideLeft>Aside Photo</SectionSideLeft>
               <SectionSideRight>
                 <SectionSideRightHeader>Aktualności</SectionSideRightHeader>
@@ -176,8 +174,12 @@ const BlogIndex = ({ data }) => {
                     {posts.map(post => {
                       const title = post.title
                       const excerpt = post.excerpt
-                      const src = post.featuredImage.node.mediaItemUrl
-                      const alt = post.featuredImage.node.altText
+                      const featuredImage = {
+                        fluid:
+                          post.featuredImage.node.localFile.childImageSharp
+                            .fluid.src,
+                        alt: post.featuredImage.node.alt,
+                      }
                       return (
                         <li key={post.uri}>
                           <CardWrapper>
@@ -187,7 +189,10 @@ const BlogIndex = ({ data }) => {
                             </CardHeader>
                             <CardMain>
                               <CardMainPhoto>
-                                <CardMainPhotoItem src={src} alt={alt} />
+                                <CardMainPhotoItem
+                                  src={featuredImage.fluid}
+                                  alt={featuredImage.alt}
+                                />
                               </CardMainPhoto>
                               <CardMainContent>
                                 {parse(excerpt)}
@@ -212,7 +217,7 @@ const BlogIndex = ({ data }) => {
               <MenuListItem>RODO</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <Section>
+          <Section id="gmina">
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
               <SectionSideRight>
@@ -227,7 +232,7 @@ const BlogIndex = ({ data }) => {
               <MenuListItem>Zabytki</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <Section>
+          <Section id="historia">
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
               <SectionSideRight>
@@ -243,7 +248,7 @@ const BlogIndex = ({ data }) => {
               <MenuListItem>Ochrona środowiska</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <Section>
+          <Section id="natura">
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
               <SectionSideRight>
@@ -259,7 +264,7 @@ const BlogIndex = ({ data }) => {
               <MenuListItem>Sport</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <Section>
+          <Section id="turystyka">
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
               <SectionSideRight>
@@ -273,7 +278,7 @@ const BlogIndex = ({ data }) => {
               <MenuListItem>Atrakcje kulturalne</MenuListItem>
             </MenuListWrapper>
           </BreakeSection>
-          <Section>
+          <Section id="kultura">
             <SectionWrapper>
               <SectionSideLeft>Aside Photo</SectionSideLeft>
               <SectionSideRight>
@@ -302,6 +307,8 @@ export const pageQuery = graphql`
             }
           }
         }
+        featuredImage: { node: { srcSet: {} } }
+        featuredImageId: {}
       }
       limit: 4
     ) {
@@ -315,6 +322,15 @@ export const pageQuery = graphql`
             altText
             mediaItemUrl
             srcSet
+            localFile {
+              childImageSharp {
+                fluid {
+                  tracedSVG
+                  srcSet
+                  src
+                }
+              }
+            }
           }
         }
       }
